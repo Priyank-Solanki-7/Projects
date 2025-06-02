@@ -1,0 +1,79 @@
+class CurrancyAppp extends StatelessWidget {
+  const CurrancyAppp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    int value = 0;
+    TextEditingController textControll = TextEditingController();
+    return MaterialApp(
+      title: "Currency converter App",
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          appBar: AppBar(
+              backgroundColor: Color.fromRGBO(46, 69, 85, 1),
+              title: Container(
+                margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: Text(
+                  "Currency Converter",
+                  style: TextStyle(color: Color.fromRGBO(38, 227, 174, 1)),
+                ),
+              )),
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 100, 0, 50),
+                    child: Text("Hello User Wellcome",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color.fromRGBO(200, 20, 54, 1),
+                            fontSize: 30)),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
+                    child: Text(
+                      "0",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromRGBO(9, 185, 220, 1),
+                          fontSize: 28),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 30),
+                    child: TextField(
+                      controller: textControll,
+                      keyboardType:
+                          TextInputType.numberWithOptions(decimal: true),
+                      decoration: InputDecoration(
+                          hintText: "enter a amount in INR",
+                          prefixIcon: Icon(
+                            Icons.currency_rupee_outlined,
+                            color: Color.fromRGBO(36, 78, 80, 1),
+                          ),
+                          focusedBorder: InputBorder.none,
+                          border: InputBorder.none,
+                          filled: true,
+                          fillColor: Color.fromRGBO(240, 238, 237, 1)),
+                    ),
+                  ),
+                  TextButton(
+                      style: ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(
+                              Color.fromRGBO(172, 210, 179, 1)),
+                          foregroundColor: WidgetStatePropertyAll(
+                              Color.fromRGBO(0, 0, 0, 1)),
+                          fixedSize: WidgetStatePropertyAll(Size(200, 50))),
+                      onPressed: () {
+                        debugPrint("clicked");
+                        print(textControll);
+                      },
+                      child: Text("Convert")),
+                ],
+              ),
+            ),
+          )),
+    );
+  }
+}
