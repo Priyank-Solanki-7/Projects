@@ -1,0 +1,21 @@
+{
+  "name": "restorent_backend",
+  "version": "1.0.0",
+  "description": "this is restorent management website use react,express,sql,mongo",
+  "main": "app.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon app.js"
+  },
+  "author": "Priyank Solanki",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.17.1",
+    "mysql2": "^3.14.3",
+    "nodemon": "^3.1.10",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3"
+  }
+}
