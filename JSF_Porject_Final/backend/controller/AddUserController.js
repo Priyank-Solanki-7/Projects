@@ -1,6 +1,25 @@
 import db from "../db.js";
 import bcrypt from "bcryptjs";
 
+// ensure register table exists
+const ensureRegisterTable = () => {
+  const createTableSQL = `
+    CREATE TABLE IF NOT EXISTS register (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      fullName VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `;
+  db.query(createTableSQL, (err) => {
+    if (err) console.error("Failed to ensure register table:", err);
+    else console.log("register table ready");
+  });
+};
+
+ensureRegisterTable();
+
 export const ragister = (req, res) => {
   const { fullName, email, password, confirmPassword } = req.body;
   if (!fullName || !email || !password) {
@@ -19,7 +38,7 @@ export const ragister = (req, res) => {
       console.error("DB error:", checkErr);
       return res.status(500).json({ message: "Database error" });
     }
-    if (checkRes.length > 0) {
+    if (checkRes && checkRes.length > 0) {
       return res.status(409).json({ message: "Email already registered" });
     }
 

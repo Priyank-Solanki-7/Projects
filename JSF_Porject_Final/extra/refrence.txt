@@ -161,7 +161,6 @@ const RegisterPage =()=>{
   );
 };
 export default RegisterPage;
-// ...existing code...
 
 /* login */
 
@@ -322,4 +321,57 @@ app.use("/login", loginuser);
 app.listen(PORT,()=>{
     console.log(`http://localhost:${PORT}`);
 });
+// ...existing code...
+
+
+// controller add item
+
+import db from '../db.js';
+
+export const addItem = async (req, res) => {
+  try {
+    const { itemName, cost, url, feedback } = req.body;
+
+    // Basic validation
+    if (!itemName || cost === undefined || cost === null) {
+      return res.status(400).json({ error: 'itemName and cost are required' });
+    }
+
+    // Ensure cost is numeric
+    const costNum = parseFloat(cost);
+    if (Number.isNaN(costNum)) {
+      return res.status(400).json({ error: 'cost must be a number' });
+    }
+
+    const sql = `INSERT INTO items (itemName, cost, url, feedback)
+                 VALUES (?, ?, ?, ?)`;
+    const params = [itemName, costNum, url || null, feedback || null];
+
+    const [result] = await db.promise().query(sql, params);
+
+    return res.status(201).json({ iditem: result.insertId, message: 'Item added' });
+  } catch (err) {
+    console.error('AddItem error:', err);
+    return res.status(500).json({ error: 'Database error' });
+  }
+};
+
+// route add item
+
+import express from 'express';
+import { addItem } from '../controller/AddItemController.js';
+
+const router = express.Router();
+
+// POST /api/items
+router.post('/', addItem);
+
+export default router;
+
+// app.js
+
+// ...existing code...
+import addItemRoutes from './routes/addItem.js';
+// ...existing code...
+app.use('/api/items', addItemRoutes);
 // ...existing code...
