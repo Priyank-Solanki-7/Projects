@@ -1,10 +1,11 @@
 import express from "express";
 import db from "./db.js";
-import adduser from "./routes/AddUserRoute.js";
-import loginuser from "./routes/Loginuser.js";
-import itemsRoutes from "./routes/items.js";
-import purchasesRoutes from "./routes/purchases.js";
-import tablesRoutes from "./routes/tables.js";
+import adduser from "./routes/AddUser.routes.js";
+import loginuser from "./routes/Loginuser.routes.js";
+import itemsRoutes from "./routes/items.routes.js";
+import purchasesRoutes from "./routes/purchases.routes.js";
+import tablesRoutes from "./routes/tables.routes.js";
+import staffRoutes from "./routes/staff.routes.js";
 import cors from "cors";
 const app = express();
 const PORT = 3000;
@@ -25,6 +26,7 @@ app.use("/login", loginuser);
 app.use("/api/items", itemsRoutes);
 app.use("/api/purchases", purchasesRoutes);
 app.use("/api/tables", tablesRoutes);
+app.use("/api/staff", staffRoutes);
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);

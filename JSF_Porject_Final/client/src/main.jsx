@@ -9,6 +9,7 @@ import Menu from "./components/Menu.jsx";
 import Orders from "./components/Orders.jsx";
 import Tables from "./components/Tables.jsx";
 import Layout from "./components/Layout.jsx";
+import Staff from "./components/Staff.jsx";
 
 const route = createBrowserRouter([
   // public pages without navbar
@@ -23,6 +24,7 @@ const route = createBrowserRouter([
       { index: true, element: <App /> },
       { path: "deskbord", element: <App /> },
       { path: "orders", element: <Orders /> },
+      { path: "staff", element: <Staff /> },
       { path: "tables", element: <Tables /> },
       { path: "menu", element: <Menu /> },
     ],

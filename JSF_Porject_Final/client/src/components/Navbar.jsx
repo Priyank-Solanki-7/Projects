@@ -47,12 +47,12 @@ const Navbar = () => {
             >
               Staff
             </Link>
-            <Link
+            {/* <Link
               to="/reports"
               className="text-white hover:text-yellow-300 font-semibold transition duration-150 px-3 py-2 rounded"
             >
               Reports
-            </Link>
+            </Link> */}
           </div>
           {/* User Profile */}
           <div className="flex items-center space-x-4">

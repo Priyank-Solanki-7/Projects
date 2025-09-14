@@ -123,7 +123,7 @@ const AddItem = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br  from-blue-600/10 flex items-center justify-center py-12 px-4">
+    <div className="bg-gradient-to-br from-blue-600/10 flex items-center justify-center py-12 px-4 w-full">
       <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-lg">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Add Food Item

@@ -1,2 +1,0 @@
-// item table query
-CREATE TABLE `restaurant_management`.`addfooditems` (`idItem` INT NOT NULL AUTO_INCREMENT , `itemName` VARCHAR(50) NOT NULL , `cost` DECIMAL(10,2) NOT NULL , `url` VARCHAR NOT NULL , `feedback` VARCHAR(1000) NOT NULL , PRIMARY KEY (`idItem`), UNIQUE `itemName` (`itemName`)) ENGINE = InnoDB;
